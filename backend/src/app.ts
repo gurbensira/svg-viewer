@@ -7,11 +7,15 @@ dotenv.config({
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import { mkdirSync } from 'fs';
 import designRoutes from './routes/design.routes';
 
 const PORT = process.env.PORT ?? '3001';
 const MONGODB_URI = process.env.MONGODB_URI ?? 'mongodb://localhost:27017/svg-viewer';
 const CORS_ORIGIN = process.env.CORS_ORIGIN ?? 'http://localhost:5174';
+const UPLOADS_DIR = process.env.UPLOADS_DIR ?? './uploads';
+
+mkdirSync(UPLOADS_DIR, { recursive: true });
 
 const app = express();
 
