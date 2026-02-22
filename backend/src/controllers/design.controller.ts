@@ -37,7 +37,7 @@ export const handleGetAll = async (_req: Request, res: Response): Promise<void> 
 
 export const handleGetById = async (req: Request, res: Response): Promise<void> => {
   try {
-    const design = await getDesignById(req.params.id);
+    const design = await getDesignById(req.params.id as string);
     if (!design) {
       res.status(HTTP_NOT_FOUND).json({ error: 'Design not found' });
       return;
